@@ -27,7 +27,7 @@ public class FilterUsingReduce {
                                 	return acc;
                                 }
                              },
-                             FilterUsingReduce::combineLists);
+                FilterUsingReduce::combineLists);
     }
 
     private static <I> List<I> combineLists(List<I> left, List<I> right) {

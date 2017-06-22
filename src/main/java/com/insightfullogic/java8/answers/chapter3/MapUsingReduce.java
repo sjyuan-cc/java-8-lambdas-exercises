@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class MapUsingReduce {
 
     public static <I, O> List<O> map(Stream<I> stream, Function<I, O> mapper) {
-        return stream.reduce(new ArrayList<O>(), (acc, x) -> {
+        return stream.reduce(new ArrayList<>(), (acc, x) -> {
         	// We are copying data from acc to new list instance. It is very inefficient,
         	// but contract of Stream.reduce method requires that accumulator function does
         	// not mutate its arguments.
@@ -21,7 +21,7 @@ public class MapUsingReduce {
         	newAcc.add(mapper.apply(x));
             return newAcc;
         }, (List<O> left, List<O> right) -> {
-        	// We are copying left to new list to avoid mutating it. 
+        	// We are copying left to new list to avoid mutating it.
         	List<O> newLeft = new ArrayList<>(left);
         	newLeft.addAll(right);
             return newLeft;
